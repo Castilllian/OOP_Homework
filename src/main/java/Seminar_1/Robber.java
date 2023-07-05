@@ -1,21 +1,21 @@
 package Seminar_1;
 
+import java.util.ArrayList;
+
 public class Robber extends Soldiers {  // Экземпляр класса пехоты - Разбойник
-    public Robber(int health, int stamina, int hit, String name, int armor) {
-        super(health, stamina, hit, name, armor);
+    public Robber(String name,int x, int y) {
+        super(name, x, y);
     }
 
-    public Robber(String name){
-        super(name);
-    }
-
-    @Override
-    public void step() {
-
-    }
 
     @Override
     public String getInfo() {
         return "Robber";
+    }
+
+    @Override
+    public void step(ArrayList<BasicHero> team){
+        BasicHero nearestFoe = findNearest(team);
+        System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
     }
 }

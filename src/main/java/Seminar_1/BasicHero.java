@@ -1,33 +1,37 @@
 package Seminar_1;
 
-public abstract class BasicHero implements Interface_BH{
-    public String name;
-    public int hit; // ударять
-    public int health; // здоровье
-    public int stamina; // защита
-    public BasicHero(int health, int stamina, int hit, String name){
-        this.health=health;
-        this.hit=hit;
-        this.name=name;
-        this.stamina=stamina;
+import java.util.ArrayList;
+
+public abstract class BasicHero implements Interface_BH {
+    private String name;
+    private int hit; // ударять
+    private int health; // здоровье
+    private int stamina; // защита
+    protected Coordinats coordinats;
+
+    public BasicHero(String name, int x, int y) {
+        this.name = name;
+        this.hit = hit;
+        this.health = health;
+        this.stamina = stamina;
+        this.coordinats = coordinats;
+        this.coordinats= new Coordinats(x,y);
     }
 
-    public BasicHero(String name) {
-        this.name=name;
-        this.hit=10;
-        this.health=100;
-        this.stamina=0;
-    }
-    public int hit(){
-        return hit;
+
+    public Coordinats getCoordinates() {
+        return coordinats;
     }
 
-    public int stamina(int hit){
-        return hit - stamina;
+    protected BasicHero findNearest(ArrayList<BasicHero> team) {
+        BasicHero nearest = team.get(0);
+        for (BasicHero basicHero : team) {
+            if (coordinats.getDistance(basicHero.getCoordinates()) < coordinats.getDistance(nearest.getCoordinates())) {
+                nearest = basicHero;
+            }
+        }
+        return nearest;
     }
 
-    @Override
-    public void step() {
-
-    }
 }
+

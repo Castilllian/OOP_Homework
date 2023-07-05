@@ -2,62 +2,60 @@ package Seminar_1;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Interface_BH crossbowman = new Crossbowman("Crossbowman");
-        BasicHero monk = new Monk("Monk");
-        BasicHero peasant = new Peasant("Peasant");
-        BasicHero robber = new Robber("Robber");
-        BasicHero sniper = new Sniper("Sniper");
-        BasicHero spearman = new Spearman("Spearman");
-        BasicHero witch = new Witch("Witch");
-        crossbowman.getInfo();
-
         ArrayList<BasicHero> teamOne = new ArrayList<>();
         ArrayList<BasicHero> teamTwo = new ArrayList<>();
-        fillList(teamOne);
-        fillList(teamTwo);
-        for (BasicHero c:
+        fillList(teamOne, 0);
+        fillList(teamTwo, 9);
+        System.out.println(Arrays.toString(teamOne.toArray()));
+        System.out.println("-----");
+        System.out.println(Arrays.toString(teamTwo.toArray()));
+        System.out.println("-----");
+        for (BasicHero c :
                 teamOne) {
-            System.out.println(c.getInfo());
+            c.step(teamTwo);
         }
-        for (BasicHero c:
+        System.out.println("_____");
+        for (BasicHero c :
                 teamTwo) {
-            System.out.println(c.getInfo());
+            c.step(teamOne);
         }
     }
 
-    public static void fillList (ArrayList <BasicHero> list) {
+
+    public static void fillList(ArrayList<BasicHero> list, int xPosition) {
         for (int i = 0; i < 10; i++) {
             int cnt = new Random().nextInt(0, 7);
             switch (cnt) {
                 case 0: {
-                    list.add(new Crossbowman("crossbowman"));
+                    list.add(new Crossbowman("crossbowman", xPosition, i));
                     break;
                 }
                 case 1: {
-                    list.add(new Monk("monk"));
+                    list.add(new Monk("monk", xPosition, i));
                     break;
                 }
                 case 2: {
-                    list.add(new Peasant("peasant"));
+                    list.add(new Peasant("peasant", xPosition, i));
                     break;
                 }
                 case 3: {
-                    list.add(new Robber("robber"));
+                    list.add(new Robber("robber", xPosition, i));
                     break;
                 }
                 case 4: {
-                    list.add(new Sniper("sniper"));
+                    list.add(new Sniper("sniper", xPosition, i));
                     break;
                 }
                 case 5: {
-                    list.add(new Spearman("spearman"));
+                    list.add(new Spearman("spearman", xPosition, i));
                     break;
                 }
                 default: {
-                    list.add(new Witch("witch"));
+                    list.add(new Witch("witch", xPosition, i));
                     break;
                 }
             }
