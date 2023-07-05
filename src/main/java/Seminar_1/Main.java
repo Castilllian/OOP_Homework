@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<BasicHero> teamOne = new ArrayList<>();
         ArrayList<BasicHero> teamTwo = new ArrayList<>();
+
         fillList(teamOne, 0);
         fillList(teamTwo, 9);
         System.out.println(Arrays.toString(teamOne.toArray()));

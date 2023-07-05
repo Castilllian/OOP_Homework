@@ -9,12 +9,11 @@ public abstract class BasicHero implements Interface_BH {
     private int stamina; // защита
     protected Coordinats coordinats;
 
-    public BasicHero(String name, int x, int y) {
+    public BasicHero(String name, int hit, int health, int stamina, int x, int y) {
         this.name = name;
         this.hit = hit;
         this.health = health;
         this.stamina = stamina;
-        this.coordinats = coordinats;
         this.coordinats= new Coordinats(x,y);
     }
 
