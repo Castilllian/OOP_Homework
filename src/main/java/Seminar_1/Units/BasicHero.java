@@ -1,20 +1,24 @@
-package Seminar_1;
+package Seminar_1.Units;
+
+import Seminar_1.Map.Coordinats;
 
 import java.util.ArrayList;
 
 public abstract class BasicHero implements Interface_BH {
-    private String name;
-    private int hit; // ударять
-    private int health; // здоровье
-    private int stamina; // защита
+    protected String name;
+    protected int hit; // ударять
+    protected int health; // здоровье
+    protected int stamina; // защита
     protected Coordinats coordinats;
+    protected int initiative; // инициатива по ходу
 
-    public BasicHero(String name, int hit, int health, int stamina, int x, int y) {
+    public BasicHero(String name, int hit, int health, int stamina, int x, int y, int initiative) {
         this.name = name;
         this.hit = hit;
         this.health = health;
         this.stamina = stamina;
         this.coordinats= new Coordinats(x,y);
+        this.initiative = initiative;
     }
 
 
@@ -32,5 +36,10 @@ public abstract class BasicHero implements Interface_BH {
         return nearest;
     }
 
+    public String getInfo() {
+        return String.format("%s: health=%d", this.name, this.health);
+    }
+    public int getInitiative() {return this.initiative;}
 }
+
 

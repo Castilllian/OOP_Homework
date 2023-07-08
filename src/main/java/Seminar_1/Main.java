@@ -1,6 +1,9 @@
 package Seminar_1;
 
+import Seminar_1.Units.*;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Arrays;
 
@@ -8,24 +11,29 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<BasicHero> teamOne = new ArrayList<>();
         ArrayList<BasicHero> teamTwo = new ArrayList<>();
+        ArrayList<BasicHero> team = new ArrayList<>();
 
         fillList(teamOne, 0);
         fillList(teamTwo, 9);
-        System.out.println(Arrays.toString(teamOne.toArray()));
+        team.addAll(teamOne);
+        team.addAll(teamOne);
+        team.sort(Comparator.comparing(BasicHero::getInitiative));
+
+        teamOne.forEach(n -> System.out.println(n.getInfo()));
+        teamTwo.forEach(n -> System.out.println(n.getInfo()));
         System.out.println("-----");
-        System.out.println(Arrays.toString(teamTwo.toArray()));
-        System.out.println("-----");
-        for (BasicHero c :
-                teamOne) {
-            c.step(teamTwo);
-        }
-        System.out.println("_____");
-        for (BasicHero c :
-                teamTwo) {
-            c.step(teamOne);
+        for (BasicHero c : team) {
+            if (teamOne.contains(c)) {
+                c.step(teamTwo, teamOne);
+            } else {
+                c.step(teamOne, teamTwo);
+            }
+            System.out.println("team1");
+            teamOne.forEach(n -> System.out.println(n.getInfo()));
+            System.out.println("team2");
+            teamTwo.forEach(n -> System.out.println(n.getInfo()));
         }
     }
-
 
     public static void fillList(ArrayList<BasicHero> list, int xPosition) {
         for (int i = 0; i < 10; i++) {

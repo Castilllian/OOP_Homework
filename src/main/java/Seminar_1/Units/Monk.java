@@ -1,8 +1,8 @@
-package Seminar_1;
+package Seminar_1.Units;
 
 import java.util.ArrayList;
 
-public class Monk extends Mages {
+public class Monk extends Mages {  // Экземпляр класса магов МОНАХ
     public Monk(String name,  int x, int y) {  // Экземпляр класса Маги - Монах
         super(name, x, y);
     }
@@ -13,8 +13,8 @@ public class Monk extends Mages {
     }
 
     @Override
-    public void step(ArrayList<BasicHero> team){
+    public void step(ArrayList<BasicHero> team, ArrayList<BasicHero> team2){
         BasicHero nearestFoe = findNearest(team);
-        System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
+        //System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
     }
 }

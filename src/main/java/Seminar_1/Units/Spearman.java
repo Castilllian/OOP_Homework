@@ -1,4 +1,4 @@
-package Seminar_1;
+package Seminar_1.Units;
 
 import java.util.ArrayList;
 
@@ -8,13 +8,8 @@ public class Spearman extends Soldiers {  // Экземпляр класса п�
     }
 
     @Override
-    public String getInfo() {
-        return "Spearman";
-    }
-
-    @Override
-    public void step(ArrayList<BasicHero> team){
+    public void step(ArrayList<BasicHero> team, ArrayList<BasicHero> team2){
         BasicHero nearestFoe = findNearest(team);
-        System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
+        //System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
     }
 }

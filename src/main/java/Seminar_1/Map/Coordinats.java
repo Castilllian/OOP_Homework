@@ -1,4 +1,4 @@
-package Seminar_1;
+package Seminar_1.Map;
 
 public class Coordinats {
     int x;
