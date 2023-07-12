@@ -8,14 +8,16 @@ public class Crossbowman extends Archers{ // Экземпляр класса с�
     }
 
     @Override
-    public String getInfo() {
-        return "Crossbowman";
-    }
-
-    @Override
-    public void step(ArrayList<BasicHero> team, ArrayList<BasicHero> team2){
-        BasicHero nearestFoe = findNearest(team);
-        //System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
+    public void step(ArrayList<BasicHero> teamFoe, ArrayList<BasicHero> teamFriend){
+        if (this.health == 0 || arrows == 0) {return;}
+        BasicHero nearestFoe = findNearest(teamFoe);
+        nearestFoe.health -= (this.hit - this.stamina);
+        for (BasicHero c:teamFriend) {
+            if (c.getClass() == Peasant.class) {
+                return;
+            }
+        }
+        this.arrows -= 1;
     }
 }
 
