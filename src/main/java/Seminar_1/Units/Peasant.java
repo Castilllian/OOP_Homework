@@ -3,13 +3,13 @@ package Seminar_1.Units;
 import java.util.ArrayList;
 
 public class Peasant extends Soldiers {  // Экземпляр класса пехоты - Крестьянин
-    public Peasant(String name,int x, int y) {
-        super(name, x, y);
+    public Peasant(Names name,int x, int y) {
+        super(name, 2, 100,100,5, x,y,1);
     }
 
     @Override
     public void step(ArrayList<BasicHero> team, ArrayList<BasicHero> team2){
-        BasicHero nearestFoe = findNearest(team);
-        // System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
+        if (state.equals(States.DEAD)) return;
+        state = States.READY;
     }
 }
