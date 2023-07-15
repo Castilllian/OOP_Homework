@@ -3,13 +3,9 @@ package Seminar_1.Units;
 import java.util.ArrayList;
 
 public class Spearman extends Soldiers {  // Экземпляр класса пехоты - Копейщик
-    public Spearman(String name, int x, int y) {
-        super(name, x, y);
+    public Spearman(Names name, int row, int col) {
+
+        super(name, 20, 120,120,20,row, col, 5);
     }
 
-    @Override
-    public void step(ArrayList<BasicHero> team, ArrayList<BasicHero> team2){
-        BasicHero nearestFoe = findNearest(team);
-        //System.out.printf("%s in %d\n", nearestFoe.getInfo(), coordinats.getDistance(nearestFoe.getCoordinates()));
-    }
 }

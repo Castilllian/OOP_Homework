@@ -3,8 +3,8 @@ package Seminar_1.Units;
 import java.util.ArrayList;
 
 public class Peasant extends Soldiers {  // Экземпляр класса пехоты - Крестьянин
-    public Peasant(Names name,int x, int y) {
-        super(name, 2, 100,100,5, x,y,1);
+    public Peasant(Names name,int row, int col) {
+        super(name, 2, 100,100,5, row,col,1);
     }
 
     @Override

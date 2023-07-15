@@ -7,13 +7,14 @@ public abstract class Mages extends BasicHero implements Interface_BH{
     int mana; // мана
     int maxMana;
 
-    public Mages(Names name, int hit, int health, int curHp, int stamina, int x, int y, int initiative, int mana, int maxMana) {
-        super(name, 1, 100, 100, 5, x, y, 2);
+    public Mages(Names name, int hit, int health, int curHp, int stamina, int row, int col, int initiative, int mana, int maxMana) {
+        super(name, 1, 100, 100, 5, row, col, 2);
         this.mana=mana;
         this.maxMana=maxMana;
     }
 
     private BasicHero findMostDamaged(ArrayList<BasicHero> team) {
+        if (team.size() == 0) return null;
         BasicHero mostDamaged = team.get(0);
         for (BasicHero character : team) {
             if (!character.state.equals(States.DEAD)
@@ -29,12 +30,17 @@ public abstract class Mages extends BasicHero implements Interface_BH{
     }
 
     public void step(ArrayList<BasicHero> teamFoe, ArrayList<BasicHero> teamFriend) {
-        if (state.equals(States.DEAD)) return;
-        BasicHero damagedFriend = findMostDamaged(teamFriend);
+        if (this.isDead()) return;
         if (mana < maxMana) mana += 1;
-        if (damagedFriend != null && mana >= hit) {
+        if (mana < hit) {
+            state = States.NOMANA;
+            return;
+        }
+        BasicHero damagedFriend = findMostDamaged(getNotDeadTeamMembers(teamFriend));
+        if (damagedFriend != null) {
             damagedFriend.getHealing(hit);
             mana -= hit;
+            state = States.CAST;
         }
     }
 
