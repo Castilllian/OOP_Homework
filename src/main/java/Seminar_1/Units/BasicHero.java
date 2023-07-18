@@ -14,7 +14,7 @@ public abstract class BasicHero implements Interface_BH {
     protected Coordinates position;
     protected int initiative; // инициатива по ходу
     protected States state; // статус персонажа
-    protected float curHp; // текущее здоровье
+    protected int curHp; // текущее здоровье
 
 
     public BasicHero(Names name, int hit, int health, int curHp, int stamina, int row, int col, int initiative) {
